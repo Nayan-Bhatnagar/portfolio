@@ -1,5 +1,6 @@
 :root {
   --color-accent: rgb(82, 181, 114);
+  color-scheme: light dark;
 }
 
 body {
@@ -7,18 +8,19 @@ body {
 	   and use the OS’s UI font as the website font
 	 */
   font: 100%/1.5 system-ui;
-  max-width: 100ch;
+  max-width: 80ch;
   margin-inline: auto;
-  padding: 1% 7% 4% 7%;
+  padding: 1% 14% 4% 7%;
   accent-color: var(--color-accent);
 }
 
 nav {
+  --border-color: oklch(66.654% 0.0195 201.215 / 0.5);
   display: flex;
   margin-bottom: 1.5em;
   border-bottom-width: 2px;
   border-bottom-style: solid;
-  border-bottom-color: oklch(69.044% 0.01261 197.21);
+  border-bottom-color: var(--border-color);
 
   a {
     flex: 1;
@@ -32,16 +34,16 @@ nav {
     border-bottom-width: 0.4em;
     border-bottom-style: solid;
     border-bottom-color: var(--color-accent);
-    background-color: oklch(from var(--color-accent) 95% 5% h);
-    padding-bottom: 0.3em;
+    background-color: color-mix(in oklch, var(--color-accent), canvas 60%);
+    padding-bottom: 0.1em;
   }
 }
 
 a.current {
   border-bottom-width: 0.4em;
   border-bottom-style: solid;
-  border-bottom-color: oklch(80% 3% 200);
-  padding-bottom: 0.3em;  
+  border-bottom-color: var(--border-color);
+  padding-bottom: 0.1em;  
 }
 
 form {
@@ -53,10 +55,22 @@ form {
     display: grid;
     grid-template-columns: subgrid;
     grid-column: 1 / -1;
+
+    input {
+      font: inherit;
+    }
+    textarea {
+      font: inherit;
+    }
   }
 
   button {
     grid-column: 1 / -1;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font: inherit;
+    background-color: light-dark(#d8d0d076, #ddcfcf7a);
+    border-color: light-dark(rgb(199, 191, 191), rgba(231, 221, 221, 0.869));
   }
 }
 
@@ -90,7 +104,7 @@ section {
 
   h2 {
     font-size: 200%;
-    color: rgb(69, 77, 84);
+    color: light-dark(rgb(69, 77, 84), rgb(215, 216, 218));
   }
 
   p, li {
@@ -107,4 +121,15 @@ header {
   border-bottom-width: 4px;
   border-bottom-style: solid;
   border-bottom-color: oklch(64.11% 0.05899 195.849);
+}
+
+label.color-scheme {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  font-size: 80%;
+
+  select {
+    font: inherit;
+  }
 }
