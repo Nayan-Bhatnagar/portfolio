@@ -159,3 +159,73 @@ img {
   font-weight: 300;
   color: #111;
 }
+
+#projects-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+.swatch {
+  width: 2em;
+  height: 2em;
+  display: inline-block;
+  background-color: var(--color);
+  border-radius: 50%;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7em, 1fr));
+  gap: 1em;
+  padding: 10px;
+  border: 2px solid gray;
+  flex: 1;
+}
+
+.legend-list {
+  display: flex;
+  gap: 0.4em;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 4em;
+}
+
+.searchBar {
+  margin-top: 1em;
+  margin-bottom: 3em;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 25px;
+}
+
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.selected {
+  --color: oklch(47.652% 0.18033 323.385) !important;
+
+  &:is(path) {
+    fill: var(--color);
+    stroke: darkgray;
+    stroke-width: 1px;
+    stroke-linejoin: round;
+    border-color: darkgray;
+    border-width: 1px;
+  }
+}
